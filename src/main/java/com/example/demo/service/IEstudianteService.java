@@ -6,10 +6,10 @@ public interface IEstudianteService {
 
 	public void guradar(Estudiante estudiante);
 
-	public Estudiante buscar(String cedula);
+	public Estudiante buscar(Integer id);
 
 	public void actualizar(Estudiante estudiante);
 
-	public void borrar(String cedula);
+	public void borrar(Integer id);
 
 }

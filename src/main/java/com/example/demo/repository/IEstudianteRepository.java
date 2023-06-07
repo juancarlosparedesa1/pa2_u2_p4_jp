@@ -7,10 +7,10 @@ public interface IEstudianteRepository {
 	// CRUD
 	public void insertar(Estudiante estudiante);
 
-	public Estudiante buscar(String cedula);
+	public Estudiante buscar(Integer id);
 
 	public void actualizar(Estudiante estudiante);
 
-	public void eliminar(String cedula);
+	public void eliminar(Integer id);
 
 }

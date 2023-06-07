@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,22 +30,26 @@ public class Pa2U2P4JpApplication implements CommandLineRunner {
 		estudiante1.setNombre("Juan Carlos");
 		estudiante1.setCedula("1726890000");
 
+		Estudiante estudiante2 = new Estudiante();
+		estudiante2.setApellido("Benitez");
+		estudiante2.setNombre("Alicia");
+		estudiante2.setCedula("04007250000");
+
 		// guardar estudiante en la bd
 		// nota, se guarda por una sola vez si no tiene secuencia
-		// this.estudianteService.guradar(estudiante1);
-
+		this.estudianteService.guradar(estudiante1);
+		this.estudianteService.guradar(estudiante2);
 		// buscar estudiante
-		Estudiante estudianteBuscado = this.estudianteService.buscar(estudiante1.getCedula());
-		System.out.println("Se encontro el estudiante:" + estudianteBuscado);
+//		Estudiante estudianteBuscado = this.estudianteService.buscar(estudiante1.getId());
+//		System.out.println("Se encontro el estudiante:" + estudianteBuscado);
 
 		// actualizar
-		estudiante1.setApellido("Angulo");
-		this.estudianteService.actualizar(estudianteBuscado);
-		System.out.println("Se imprime el estudiante con los datos actualizados:" + estudiante1);
+//		estudiante1.setApellido("Angulo");
+//		this.estudianteService.actualizar(estudianteBuscado);
+//		System.out.println("Se imprime el estudiante con los datos actualizados:" + estudiante1);
 
 		// eliminar estudiante
-		System.out.println("Eliminando estudiante.....");
-		this.estudianteService.borrar(estudiante1.getCedula());
+//		this.estudianteService.borrar(estudiante1.getId());
 
 	}
 
