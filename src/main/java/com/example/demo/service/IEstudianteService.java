@@ -6,4 +6,10 @@ public interface IEstudianteService {
 
 	public void guradar(Estudiante estudiante);
 
+	public Estudiante buscar(String cedula);
+
+	public void actualizar(Estudiante estudiante);
+
+	public void borrar(String cedula);
+
 }

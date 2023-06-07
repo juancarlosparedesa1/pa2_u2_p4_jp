@@ -6,6 +6,11 @@ public interface IEstudianteRepository {
 
 	// CRUD
 	public void insertar(Estudiante estudiante);
-	
+
+	public Estudiante buscar(String cedula);
+
+	public void actualizar(Estudiante estudiante);
+
+	public void eliminar(String cedula);
 
 }
