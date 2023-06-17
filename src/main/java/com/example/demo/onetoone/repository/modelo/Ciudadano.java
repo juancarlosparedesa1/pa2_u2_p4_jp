@@ -1,5 +1,6 @@
 package com.example.demo.onetoone.repository.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,10 +29,11 @@ public class Ciudadano {
 	@Column(name = "ciud_cedula")
 	private String cedula;
 
-	//en la columna que esta haciendo referencia
-	//a la relacion uno  a uno
-	@OneToOne(mappedBy = "ciudadano")//nombre del atributo con el que fue mapeaodo
-	private Empleado empleado;//uno solo
+	// en la columna que esta haciendo referencia
+	// a la relacion uno a uno
+//	@OneToOne(mappedBy = "ciudadano")
+	@OneToOne(mappedBy = "ciudadano", cascade = CascadeType.ALL) // nombre del atributo con el que fue mapeaodo
+	private Empleado empleado;// uno solo
 
 //SET AND GET
 	public Integer getId() {
@@ -65,7 +67,6 @@ public class Ciudadano {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
-	
 
 	public Empleado getEmpleado() {
 		return empleado;
@@ -74,7 +75,5 @@ public class Ciudadano {
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
-
-	
 
 }
