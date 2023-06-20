@@ -24,9 +24,8 @@ public class Libro {
 	private String titulo;
 	private String editorial;
 
-	@ManyToMany
-//	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "autor_libro", joinColumns = @JoinColumn(name = "auli_id_libro"), inverseJoinColumns = @JoinColumn(name = "auli_id_autor"))
+//	@ManyToMany
+	@ManyToMany(mappedBy = "libros", cascade = CascadeType.ALL)
 	private Set<Autor> autores;
 
 //	SET AND GET
