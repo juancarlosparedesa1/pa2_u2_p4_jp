@@ -1,24 +1,25 @@
 package com.example.demo;
 
-import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.onetoone.repository.modelo.Ciudadano;
-import com.example.demo.onetoone.repository.modelo.Empleado;
-import com.example.demo.onetoone.service.ICiudadanoService;
-import com.example.demo.onetoone.service.IEmpleadoService;
+import com.example.demo.libreria.repository.modelo.Autor;
+import com.example.demo.libreria.repository.modelo.Libro;
+import com.example.demo.libreria.service.IAutorService;
+import com.example.demo.libreria.service.ILibroService;
 
 @SpringBootApplication
 public class Pa2U2P4Jp2Application implements CommandLineRunner {
 
 	@Autowired
-	private IEmpleadoService empleadoService;
+	private IAutorService autorService;
 	@Autowired
-	private ICiudadanoService ciudadanoService;
+	private ILibroService libroService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4Jp2Application.class, args);
@@ -26,27 +27,36 @@ public class Pa2U2P4Jp2Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//consola sentencias ddl se llaman
-		// 1.Insertar ciudadano y empleado
-		Empleado empleado1 = new Empleado();
-		empleado1.setCargo("administrador");
-		empleado1.setSueldo(new BigDecimal(1000));
 
-		Ciudadano ciudadano1 = new Ciudadano();
-		ciudadano1.setApellido("Paredes");
-		ciudadano1.setCedula("1726890000");
-		ciudadano1.setNombre("Juan Carlos");
+		// Creamos un autor
 
-		Ciudadano ciudadano2 = new Ciudadano();
-		ciudadano2.setApellido("Angulo");
-		ciudadano2.setCedula("1726000000");
-		ciudadano2.setNombre("Jean Carlos");
+		Set<Libro> ConjuntoLibros = new HashSet<>();
+		Set<Autor> ConjuntoAutores = new HashSet<>();
+		Autor autor1 = new Autor();
+		autor1.setApellido("Paredes");
+		autor1.setNombre("Juan Carlos");
+		ConjuntoAutores.add(autor1);
 
-		empleado1.setCiudadano(ciudadano2);
-		ciudadano1.setEmpleado(empleado1);
+		Libro libro1 = new Libro();
+		libro1.setEditorial("Editorial1");
+		libro1.setTitulo("Titulo 1");
+		libro1.setAutores(ConjuntoAutores);
+		ConjuntoLibros.add(libro1);
 
-//		this.ciudadanoService.agregar(ciudadano2);
-		this.empleadoService.agregar(empleado1);
+		Libro libro2 = new Libro();
+		libro2.setEditorial("Editorial2");
+		libro2.setTitulo("Titulo 2");
+		libro2.setAutores(ConjuntoAutores);
+		ConjuntoLibros.add(libro2);
+
+		Libro libro3 = new Libro();
+		libro3.setEditorial("Editorial3");
+		libro3.setTitulo("Titulo 3");
+		libro3.setAutores(ConjuntoAutores);
+		ConjuntoLibros.add(libro3);
+
+		autor1.setLibros(ConjuntoLibros);
+		this.autorService.agregar(autor1);
 
 	}
 }
