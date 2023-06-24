@@ -1,7 +1,6 @@
 package com.example.demo.banco.repository;
 
 import com.example.demo.banco.repository.modelo.Cuenta;
-import com.example.demo.repository.modelo.Estudiante;
 
 public interface ICuentaRepository {
 
