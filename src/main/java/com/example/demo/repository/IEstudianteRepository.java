@@ -25,4 +25,6 @@ public interface IEstudianteRepository {
 
 	public Estudiante seleccionarPorApellidoTyped(String apellido);
 
+	public Estudiante buscaPorApellidoNamed(String apellido);
+
 }

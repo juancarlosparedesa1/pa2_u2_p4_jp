@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,15 +26,12 @@ public class Pa2U2P4Jp2Application implements CommandLineRunner {
 		estudiante1.setNombre("Juan Carlos");
 //		this.estudianteService.guradar(estudiante1);
 
-	
 		this.estudianteService.buscarPorApellido("Paredes");
 
 //		this.estudianteService.reporte("Paredes");
 
-
 		this.estudianteService.SeleccionarPorApellidoyNombre("Paredes", "Juan Carlos");
 
-	
 		this.estudianteService.seleccionarPorApellidoTyped("Paredes");
 
 	}

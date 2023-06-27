@@ -6,7 +6,7 @@ import com.example.demo.repository.modelo.Estudiante;
 
 public interface IEstudianteService {
 
-	public void guradar(Estudiante estudiante);
+	public void guardar(Estudiante estudiante);
 
 	public Estudiante buscar(String cedula);
 

@@ -92,4 +92,14 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository {
 
 	}
 
+	@Override
+	public Estudiante buscaPorApellidoNamed(String apellido) {
+		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("Estudiante.buscaPorAppelido",
+				Estudiante.class);
+
+		myQuery.setParameter("datoApellido", apellido);
+
+		return myQuery.getSingleResult();
+	}
+
 }
