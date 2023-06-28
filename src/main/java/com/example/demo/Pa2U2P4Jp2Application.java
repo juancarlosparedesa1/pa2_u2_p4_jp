@@ -30,9 +30,29 @@ public class Pa2U2P4Jp2Application implements CommandLineRunner {
 
 //		this.estudianteService.reporte("Paredes");
 
+		System.out.println("Buscar por apellido y nombre Query");
 		this.estudianteService.SeleccionarPorApellidoyNombre("Paredes", "Juan Carlos");
 
+		System.out.println("Buscar por apellido typed");
 		this.estudianteService.seleccionarPorApellidoTyped("Paredes");
+
+		System.out.println("Busqueda con named");
+		this.estudianteService.buscaPorApellidoNamed(estudiante1.getApellido());
+
+		System.out.println("Busqued con NamedQuery apellido");
+		this.estudianteService.buscaPorApellidoNamedQuery(estudiante1.getApellido());
+
+		System.out.println("Busqueda o seleccionar con NativeQuery");
+		this.estudianteService.seleccionarPorApellidoNativeQuery(estudiante1.getApellido());
+
+		System.out.println("Busqueda o seleccionar con NativeQueryNamed");
+		this.estudianteService.seleccionarPorApellidoNativeQueryNamed(estudiante1.getApellido());
+
+		System.out.println("Busqued con NamedQuery nombre");
+
+		this.estudianteService.buscaPorNombreNamedQuery(estudiante1.getNombre());
+		System.out.println("Busqueda o seleccionar con NativeQueryNamed nombre");
+		this.estudianteService.seleccionarPorNombreNativeQueryNamed(estudiante1.getNombre());
 
 	}
 }

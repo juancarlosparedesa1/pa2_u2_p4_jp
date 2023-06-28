@@ -64,4 +64,46 @@ public class EstudianteServiceImpl implements IEstudianteService {
 		return this.estudianteRepository.seleccionarPorApellidoTyped(apellido);
 	}
 
+	@Override
+	public Estudiante buscaPorApellidoNamed(String apellido) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.buscaPorApellidoNamed(apellido);
+	}
+
+	@Override
+	public Estudiante buscaPorApellidoNamedQuery(String apellido) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.buscaPorApellidoNamedQuery(apellido);
+	}
+
+	@Override
+	public Estudiante seleccionarPorApellidoNativeQuery(String apellido) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.seleccionarPorApellidoNativeQuery(apellido);
+	}
+
+	@Override
+	public Estudiante seleccionarPorApellidoNativeQueryNamed(String apellido) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.seleccionarPorApellidoNativeQueryNamed(apellido);
+	}
+
+	@Override
+	public Estudiante buscaPorNombreNamedQuery(String nombre) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.buscaPorNombreNamedQuery(nombre);
+	}
+
+	@Override
+	public Estudiante seleccionarPorNombreNativeQueryNamed(String nombre) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.seleccionarPorNombreNativeQueryNamed(nombre);
+	}
+
+	@Override
+	public Estudiante seleccionarPorApellidoCriteriaApiQuery(String apellido) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.seleccionarPorApellidoCriteriaApiQuery(apellido);
+	}
+
 }
