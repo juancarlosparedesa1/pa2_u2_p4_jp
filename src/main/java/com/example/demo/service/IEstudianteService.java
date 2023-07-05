@@ -33,8 +33,13 @@ public interface IEstudianteService {
 	public Estudiante buscaPorNombreNamedQuery(String nombre);
 
 	public Estudiante seleccionarPorNombreNativeQueryNamed(String nombre);
-	
+
 	public Estudiante seleccionarPorApellidoCriteriaApiQuery(String apellido);
 
+	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso);
+
+	public int borrarPorNombre(String nombre);
+
+	public int actualizarPorApellido(String nombre, String apellido);
 
 }

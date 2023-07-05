@@ -183,4 +183,83 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository {
 		return myQueryFinal.getSingleResult();
 	}
 
+	@Override
+	public Estudiante seleccionarEstudianteDinamico(String nombre, String apellido, Double peso) {
+		// TODO Auto-generated method stub
+
+//		0.Declarar un constructor
+		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+
+//		1.Especificar el tipo de retorno que tiene mi Query
+
+		CriteriaQuery<Estudiante> myCriteriaQuery = myBuilder.createQuery(Estudiante.class);
+//		2.
+		Root<Estudiante> miTablaFrom = myCriteriaQuery.from(Estudiante.class);
+
+//		3.Construye las condiciones
+//		peso>100 e.nombre=?   AND e.apellido=? ?:dato que le envio
+//		peso<=100 e.nombre=?  OR e.apellido=?
+//		en cualqueir opcion hay 2 predicados
+
+//		e.nombre=?
+		Predicate pNombre = myBuilder.equal(miTablaFrom.get("nombre"), nombre);// nombre como objeto
+//		e.apellido=?
+		Predicate pApellido = myBuilder.equal(miTablaFrom.get("apellido"), apellido);// nombre como objeto
+
+		// el and y el or es otra condicion predicado
+		// and una de las 2
+		// or o una u otra
+		Predicate predicadofinal = null;
+		if (peso.compareTo(Double.valueOf(100)) <= 0) {// si lo resalta esta obsoleto o no es necesario
+			predicadofinal = myBuilder.or(pNombre, pApellido);
+		} else {
+			predicadofinal = myBuilder.and(pNombre, pApellido);
+		}
+
+		// atributo esta en mi tabla, condiciones estan dadas por metodos, hay mas
+		// metodos bettew
+//		4.Armamos mi sql final
+		myCriteriaQuery.select(miTablaFrom).where(predicadofinal);
+//		5.Ejecución del Query lo realizamos con TypedQuery
+		TypedQuery<Estudiante> myQueryFinal = this.entityManager.createQuery(myCriteriaQuery);// puedo pasarle un objeto
+																								// criteria query
+		return myQueryFinal.getSingleResult();
+	}
+
+	@Override
+	public int eliminarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+//		SQL
+		// DELETE FROM estudiante WHERE estu_nombre=?
+//		jpql
+//		DELETE  FROM Estudiante e WHERE e.nombre=:datoNombre
+//		eliminar y actualizar se utiliza un tipo de Query
+//		el asterisco o el alias?
+//		e o el* en el delete no existe el sql
+		Query myQuery = this.entityManager.createQuery("DELETE  FROM Estudiante e WHERE e.nombre=:datoNombre");
+		myQuery.setParameter("datoNombre", nombre);
+
+		return myQuery.executeUpdate();// unico metodo
+		// cuando elimino se actualiza la base de datos
+		// listado actualizado:algunos ingresan otros eliminan
+		// return el numero de registro afectados
+	}
+
+	@Override
+	public int actualizarPorApellido(String nombre, String apellido) {
+		// TODO Auto-generated method stub
+		// Quero que se actualice el nombre a traves del apellido
+//		sql
+//		UPDATE estudiante SET estu_nombre=? WHERE estu_apellido=?
+//		jpql
+//		UPDATE Estudiante e SET e.nombre=:datoNombre WHERE e.apellido=:datoApellido
+		Query myQuery = this.entityManager
+				.createQuery("UPDATE Estudiante e SET e.nombre=:datoNombre WHERE e.apellido=:datoApellido");
+		myQuery.setParameter("datoNombre", nombre);
+		myQuery.setParameter("datoApellido", apellido);
+
+		return myQuery.executeUpdate();// unico metodo
+
+	}
+
 }
