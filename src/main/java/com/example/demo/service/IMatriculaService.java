@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
-import org.springframework.cglib.core.Local;
 
 import com.example.demo.repository.modelo.Matricula;
 
@@ -15,5 +14,5 @@ public interface IMatriculaService {
 
 	public void borrar(Integer id);
 
-	public void realizarMatricula(String placa, LocalDateTime fechaMatricula);
+	public void realizarMatricula(String placa, BigDecimal costo, LocalDateTime fechaMatricula);
 }

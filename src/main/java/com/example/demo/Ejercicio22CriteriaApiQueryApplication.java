@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,8 @@ public class Ejercicio22CriteriaApiQueryApplication implements CommandLineRunner
 				vehiculo2.getPlaca(), vehiculo2.getNumeroSerie(), vehiculo2.getAnioFabricacion());
 
 //		4.Realizar Matricula unicamente con los atributos (placa y fecha de matricula) 
-		this.matriculaService.realizarMatricula(vehiculo2.getPlaca(), LocalDateTime.now());
+		this.matriculaService.realizarMatricula(vehiculo1.getPlaca(), new BigDecimal(500), LocalDateTime.now());
+		this.matriculaService.realizarMatricula(vehiculo2.getPlaca(), new BigDecimal(500), LocalDateTime.now());
 	}
 
 }

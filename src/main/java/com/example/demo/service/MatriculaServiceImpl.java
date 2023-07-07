@@ -44,13 +44,31 @@ public class MatriculaServiceImpl implements IMatriculaService {
 	}
 
 	@Override
-	public void realizarMatricula(String placa, LocalDateTime fechaMatricula) {
+	public void realizarMatricula(String placa, BigDecimal costo, LocalDateTime fechaMatricula) {
 		// TODO Auto-generated method stub
 
 		Vehiculo vehiculobd = this.vehiculoRepository.SeleccionarPorPlaca(placa);
 
 		Matricula matricula = new Matricula();
-		matricula.setCosto(new BigDecimal(500));
+
+		// transformo a entero el año de fabricacion
+		int anioFabricacionInt = Integer.parseInt(vehiculobd.getAnioFabricacion());
+//		inicializao en null el costoMatricula para hacer operaciones y setear
+		BigDecimal costoMatricula = new BigDecimal(0);
+		// valido el año de fabricacion y de acuerdo a eso obtengo el costo de la
+		// matricula
+		if (anioFabricacionInt > 2000) {
+//			System.out.println("ingreso al primer if");
+			costoMatricula = costo;
+		} else {
+			if (anioFabricacionInt < 2000) {
+//				System.out.println("ingreso al segundo if");
+				costoMatricula = costo.add(costo.multiply(new BigDecimal(.10)));
+			}
+
+		}
+//		seteo los datos de la matricula
+		matricula.setCosto(costoMatricula);
 		matricula.setFecha(fechaMatricula);
 		matricula.setTipo("oridinaria");
 		matricula.setVehiculo(vehiculobd);
